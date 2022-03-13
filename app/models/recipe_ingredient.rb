@@ -6,9 +6,6 @@ class RecipeIngredient < ApplicationRecord
 
   extend Enumerize
 
-  enumerize :unit, in: [:kg, :g, :ml, :l, :lžička, :lžíce, :špetka]
+  enumerize :unit, in: [:kg, :g, :ml, :l]
 
-  def units_to_select
-    super.unit.options
-  end
 end

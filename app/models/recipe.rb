@@ -1,9 +1,8 @@
 class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients, :dependent => :destroy
-  has_rich_text :instructions
 
-  validates_presence_of :title
+  validates_presence_of :name
 
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
 
