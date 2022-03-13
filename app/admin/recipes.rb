@@ -23,7 +23,7 @@ ActiveAdmin.register Recipe do
     f.inputs 'Zaklad' do
       f.input :name
       f.input :original
-      f.input :instructions
+      f.input :instructions, as: :quill_editor
     end
     f.inputs 'Suroviny' do
       f.has_many :recipe_ingredients do |t|
@@ -41,7 +41,7 @@ ActiveAdmin.register Recipe do
       attributes_table_for recipe do
         row ("Nazev") {recipe.name}
         row ("Referencni vaha KG") {recipe.original}
-        row ("Postup") {recipe.instructions}
+        row ("Postup") {recipe.instructions.html_safe}
       end
     end
     panel "Ingredience" do

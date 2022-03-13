@@ -1,0 +1,29 @@
+<h1><%= @recipe.name %></h1>
+
+<ul>
+  <li>
+    Referencni vaha: <%= @recipe.original %> Kg
+  </li>
+  <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+    <li>
+      <%= recipe_ingredient.amount %> <%= recipe_ingredient.unit %>: <%= recipe_ingredient.ingredient.name %>
+    </li>
+  <% end %>
+</ul>
+
+
+<br>
+<br>
+<h3>Postup</h3>
+<%= @recipe.instructions.html_safe%>
+<br>
+
+<br>
+<%= form_with url: pages_calculated_url, method: :get, local: true do |form| %>
+  <%= form.label :query, "prepocet na celkovou vahu:" %>
+  <%= form.hidden_field :recipe, value: @recipe.id %>
+  <%= form.number_field :query, step: :any, "lang"=>'cs-CZ' %> Kg<br>
+  <%= form.submit "prepocti" %>
+<% end %>
+<br>
+<%= link_to "Back to all recipes", pages_recipe_list_path %>

@@ -1,0 +1,19 @@
+<h1><%= @recipe.name %></h1>
+<br>
+Prepocet z referencni vahy <%= @recipe.original %> Kg na pozadovanou vahu <%= @request %> Kg
+<ul>
+  <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+    <li>
+      <%= recipe_ingredient.amount * @constant %> <%= recipe_ingredient.unit %>: <%= recipe_ingredient.ingredient.name %>
+    </li>
+  <% end %>
+</ul>
+
+<h3>Postup</h3>
+<%= @recipe.instructions.html_safe%>
+
+<br>
+
+
+<%= link_to "show original", recipe_public_path(@recipe) %>
+

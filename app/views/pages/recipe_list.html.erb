@@ -1,0 +1,9 @@
+<h1>Pages#recipeList</h1>
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li><%=link_to recipe.name, recipe_public_path(recipe) %></li>
+  <% end %>
+</ul>
+<br>
+<%= link_to 'HOME', pages_home_path %>
+<p>Find me in app/views/pages/recipeList.html.erb</p>
