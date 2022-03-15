@@ -8,6 +8,10 @@ class Recipe < ApplicationRecord
 
   before_save :find_or_create_ingredients
 
+  extend Enumerize
+
+  enumerize :category, in: [:Klobasa, :Uzene_maso, :Slanina, :Parek, :Burger]
+
   def find_or_create_ingredients
     self.recipe_ingredients.each do |recipe_ingredient|
       recipe_ingredient.ingredient = Ingredient.find_or_create_by(name:recipe_ingredient.ingredient.name)

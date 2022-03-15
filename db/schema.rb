@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_110759) do
+ActiveRecord::Schema.define(version: 2022_03_15_075946) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "namespace"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2022_03_13_110759) do
     t.text "instructions", limit: 4294967295
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.boolean "is_orginial"
   end
 
   add_foreign_key "recipe_ingredients", "ingredients"
